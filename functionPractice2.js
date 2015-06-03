@@ -69,9 +69,18 @@ console.log(negativeIndex(['jerry', 'sarah', 'sally'], -1));
 // printObject({ firstName: 'pork', lastName: 'chops' }) should print:
 
 var printObject = function (stuff) {
-	var object = stuff[0];
-	var object2 = stuff[2];		
-	return object + ':' + object2;
+	var key = [];
+	var value = [];
+
+	for (var property in printObject) {
+		if ( ! stuff.hasOwnProperty()) {
+			continue;
+		}
+		key.push(property);
+		value.push(data[property]);
+	}
+	return key + ':' + value;
+	
 
 }
 console.log(printObject({ a: 10, b: 20, c: 30 }));
@@ -105,8 +114,28 @@ console.log(vowels("What evil odd ducks!"));
 // twins(['a', 'a', undefined]) should return false
 
 var twins = function(findtwins) {
-
+	var howMany = findtwins.length;
+	for (var i = 1; i < howMany; i++) {
+		if((howMany % 2 === 0) && (findtwins[i] === findtwins[i + 1])) {
+		return true;
+		}
+		else {
+			return false
+		}	
+	}
 }
+console.log(twins(['a', 'a', 'b', 'b', 'c', 'c']));
+console.log(twins(['a', 'a', 'b', 'c', 'd', 'd']));
+console.log(twins(['a', 'a', 'b', 'z']));
+console.log(twins(['a', 'a', undefined]));
+
+// for (var i = 0; i < Things.length; i++) {
+// 	Things[i]
+// };
+
+
+
+
 
 
 
